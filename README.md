@@ -1,4 +1,4 @@
-# NestJS Wallet Balances API
+# NestJS Wallet Balances API Using Multicall Contracts
 
 Provides an API to retrieve the balances of specified ERC20 tokens for a given wallet address across different blockchain networks.
 
@@ -6,6 +6,14 @@ Provides an API to retrieve the balances of specified ERC20 tokens for a given w
 - Polygon Mainnet: 137
 - Arbitrum Mainnet: 42161
 - ...
+
+## Well-Known Multicall Contracts
+
+https://etherscan.io/address/0x5e227AD1969Ea493B43F840cfF78d08a6fc17796
+
+https://polygonscan.com/address/0x275617327c958bD06b5D6b871E7f491D76113dd8
+
+https://arbiscan.io/address/0x842eC2c7D803033Edf55E478F461FC547Bc54EB2
 
 ## Installation
 
@@ -19,6 +27,7 @@ Provides an API to retrieve the balances of specified ERC20 tokens for a given w
 2. Create a `.env` file in the project root directory and add the RPC URLs for different chains:
    ```
    RPC_URLS='{"1": "__YOUR_RPC_URL_1__", "137": "__YOUR_RPC_URL_2__", ...}'
+   MULTICALL_ADDRESSES='{"1": "__MULTICALL_ADDRESS_1__", "137": "__MULTICALL_ADDRESS_1__", ...}'
    ```
 
 ## Running the Application
