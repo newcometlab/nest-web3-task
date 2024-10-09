@@ -30,11 +30,13 @@ export class WalletService {
         const provider = new ethers.JsonRpcProvider(rpcUrl);
         const balances = [];
 
-        for (const tokenAddress of tokenAddresses) {
-            const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
-            const balance = await contract.balanceOf(walletAddress);
-            balances.push({ token: tokenAddress, balance: balance.toString() });
-        }
+        await Promise.all(
+            tokenAddresses.map(async tokenAddress => {
+                const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
+                const balance = await contract.balanceOf(walletAddress);
+                balances.push({ token: tokenAddress, balance: balance.toString() });
+            })
+        )
 
         return balances;
     }
